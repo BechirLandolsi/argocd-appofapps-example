@@ -6,22 +6,22 @@ clusterName: in-cluster
 projectName: deployment-pprd
 
 guestbook:
-  enabled: true
+  enabled: false
   targetRevision: main
   namespace: guestbook
 
 helmGuestbook:
-  enabled: true
+  enabled: false
   valueFile: values.yaml
   targetRevision: main
   namespace: helm-guestbook
 
 helmHooks:
-  enabled: false
+  enabled: true
   targetRevision: main
   namespace: helm-hooks
 
 syncwaves:
-  enabled: false
+  enabled: true
   targetRevision: main
   namespace: syncwaves
