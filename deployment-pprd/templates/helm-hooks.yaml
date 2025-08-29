@@ -1,0 +1,25 @@
+{{- if .Values.helmHooks }}
+{{- if .Values.helmHooks.enabled }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helmHooks
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: {{ .Values.helmHooks.namespace }}
+    server: {{ .Values.server }}
+  project: {{ .Values.projectName }}
+  source:
+    path: helm-hooks
+    repoURL: git@github.com:BechirLandolsi/argocd-appofapps-example.git
+    targetRevision: {{ .Values.helmHooks.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+{{- end }}
+{{- end }}

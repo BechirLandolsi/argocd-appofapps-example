@@ -1,0 +1,25 @@
+{{- if .Values.syncwaves }}
+{{- if .Values.syncwaves.enabled }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: syncwaves
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: {{ .Values.syncwaves.namespace }}
+    server: {{ .Values.server }}
+  project: {{ .Values.projectName }}
+  source:
+    path: sync-waves
+    repoURL: git@github.com:BechirLandolsi/argocd-appofapps-example.git
+    targetRevision: {{ .Values.syncwaves.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+{{- end }}
+{{- end }}

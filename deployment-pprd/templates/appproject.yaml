@@ -1,0 +1,36 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: deployment-pprd
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  description: Project containing AIO microservices for the pprd environment
+  destinations:
+    - namespace: '*'
+      server: '*'
+  sourceRepos:
+    - git@github.com:BechirLandolsi/argocd-appofapps-example.git
+  orphanedResources:
+    warn: false
+    #roles:
+    #  - name: developer
+    #    description: "Developer role with limited access"
+    #    policies:
+    #      - 'p, proj:my-project:developer, applications, get, my-application/*, allow'
+    #      - 'p, proj:my-project:developer, applications, sync, my-application/*, allow'
+    #    groups:
+    #      - 'dev-group'
+    #  - name: admin
+    #    description: "Admin role with full access"
+    #    policies:
+    #      - 'p, proj:my-project:admin, *, *, *, allow'
+    #    groups:
+    #      - 'admin-group'

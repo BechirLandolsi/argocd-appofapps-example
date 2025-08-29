@@ -1,0 +1,27 @@
+---
+server: https://kubernetes.default.svc
+
+clusterName: in-cluster
+
+projectName: deployment-pprd
+
+guestbook:
+  enabled: true
+  targetRevision: main
+  namespace: guestbook
+
+helmGuestbook:
+  enabled: true
+  valueFile: values.yaml
+  targetRevision: main
+  namespace: helm-guestbook
+
+helmHooks:
+  enabled: false
+  targetRevision: main
+  namespace: helm-hooks
+
+syncwaves:
+  enabled: false
+  targetRevision: main
+  namespace: syncwaves
