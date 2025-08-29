@@ -13,7 +13,7 @@ spec:
   project: {{ .Values.projectName }}
   source:
     path: sync-waves
-    repoURL: git@github.com:BechirLandolsi/argocd-appofapps-example.git
+    repoURL: https://github.com/BechirLandolsi/argocd-appofapps-example.git
     targetRevision: {{ .Values.syncwaves.targetRevision }}
   syncPolicy:
     automated:

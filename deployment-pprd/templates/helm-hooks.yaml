@@ -13,7 +13,7 @@ spec:
   project: {{ .Values.projectName }}
   source:
     path: helm-hooks
-    repoURL: git@github.com:BechirLandolsi/argocd-appofapps-example.git
+    repoURL: https://github.com/BechirLandolsi/argocd-appofapps-example.git
     targetRevision: {{ .Values.helmHooks.targetRevision }}
   syncPolicy:
     automated:

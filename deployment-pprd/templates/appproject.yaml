@@ -17,7 +17,7 @@ spec:
     - namespace: '*'
       server: '*'
   sourceRepos:
-    - git@github.com:BechirLandolsi/argocd-appofapps-example.git
+    - https://github.com/BechirLandolsi/argocd-appofapps-example.git
   orphanedResources:
     warn: false
     #roles:
