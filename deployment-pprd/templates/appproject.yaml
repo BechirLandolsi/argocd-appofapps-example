@@ -12,7 +12,7 @@ spec:
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
-  description: Project containing AIO microservices for the pprd environment
+  description: Project containing guestbook apps for the pprd environment
   destinations:
     - namespace: '*'
       server: '*'
