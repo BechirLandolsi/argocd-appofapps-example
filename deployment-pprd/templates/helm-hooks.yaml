@@ -4,8 +4,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: helmHooks
+  name: helm-hooks
   namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: {{ .Values.helmHooks.namespace }}

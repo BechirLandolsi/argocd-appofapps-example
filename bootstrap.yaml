@@ -1,0 +1,33 @@
+# Bootstrap Application for ArgoCD (App of Apps)
+# Apply once to install the deployment-pprd chart and all child applications:
+#   kubectl apply -f bootstrap.yaml -n openshift-gitops
+#
+# Uses project: default. All apps (guestbook, helm-guestbook, helm-hooks, syncwaves) are enabled.
+# Ensure the default ArgoCD project allows the repo:
+#   https://github.com/BechirLandolsi/argocd-appofapps-example.git
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: deployment-pprd
+  namespace: openshift-gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/BechirLandolsi/argocd-appofapps-example.git
+    targetRevision: main
+    path: deployment-pprd
+    helm:
+      valueFiles:
+        - values-demo.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-gitops
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true

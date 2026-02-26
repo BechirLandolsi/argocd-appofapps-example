@@ -1,8 +1,10 @@
+{{- /* Only create AppProject when not using the built-in "default" project */ -}}
+{{- if ne .Values.projectName "default" }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: deployment-pprd
+  name: {{ .Values.projectName }}
   namespace: openshift-gitops
   annotations:
     argocd.argoproj.io/manifest-generate-paths: .
@@ -34,3 +36,4 @@ spec:
     #      - 'p, proj:my-project:admin, *, *, *, allow'
     #    groups:
     #      - 'admin-group'
+{{- end }}

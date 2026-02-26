@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    "**/deployment-pprd/templates/*.yaml": "helm",
+    "**/deployment-pprd/templates/*.yml": "helm"
+  }
+}

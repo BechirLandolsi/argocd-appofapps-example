@@ -1,9 +1,9 @@
-# Default values for deployment-pprd (App of Apps)
-# Demo-ready: project default, all applications enabled
+# Demo values: project default, all applications enabled
+# Used by bootstrap.yaml for the App of Apps
 ---
 server: https://kubernetes.default.svc
 clusterName: in-cluster
-projectName: default
+projectName: demo
 
 guestbook:
   enabled: false
@@ -11,10 +11,10 @@ guestbook:
   namespace: guestbook
 
 helmGuestbook:
-  enabled: false
+  enabled: true
   valueFile: values.yaml
   targetRevision: main
-  namespace: helm-guestbook
+  namespace: guestbook
 
 helmHooks:
   enabled: false

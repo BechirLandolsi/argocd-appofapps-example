@@ -1,0 +1,4 @@
+# Helm templates use {{ }} which YAML parsers treat as flow syntax; exclude them
+extends: default
+ignore:
+  - deployment-pprd/templates/
