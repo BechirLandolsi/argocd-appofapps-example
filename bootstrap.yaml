@@ -14,7 +14,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: demo
   source:
     repoURL: https://github.com/BechirLandolsi/argocd-appofapps-example.git
     targetRevision: main
