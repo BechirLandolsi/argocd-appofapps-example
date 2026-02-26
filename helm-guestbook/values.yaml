@@ -4,13 +4,13 @@
 
 replicaCount: 1
 
-# Image that runs on OpenShift (non-root, port 8080). Alternatives: nginx:alpine (port 80, may need anyuid)
+# Runnable image: official nginx unprivileged (non-root, port 8080). Works on OpenShift without anyuid.
 image:
-  repository: registry.access.redhat.com/ubi8/nginx-120
-  tag: "1"
+  repository: docker.io/nginxinc/nginx-unprivileged
+  tag: "1.25-alpine"
   pullPolicy: IfNotPresent
 
-# UBI nginx listens on 8080 by default
+# nginx-unprivileged listens on 8080
 containerPort: 8080
 
 service:
