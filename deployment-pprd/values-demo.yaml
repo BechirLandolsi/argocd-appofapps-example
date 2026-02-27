@@ -6,7 +6,7 @@ clusterName: in-cluster
 projectName: demo
 
 guestbook:
-  enabled: false
+  enabled: true
   targetRevision: main
   namespace: guestbook
 
