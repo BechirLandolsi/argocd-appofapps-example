@@ -6,7 +6,7 @@ replicaCount: 1
 # Runnable image: official nginx unprivileged (non-root, port 8080). Works on OpenShift without anyuid.
 image:
   repository: docker.io/nginxinc/nginx-unprivileged
-  tag: "1.25-alpine"
+  tag: "5a774d34ded23e889025fec211c8db89e1a93898"
   pullPolicy: IfNotPresent
 # nginx-unprivileged listens on 8080
 containerPort: 8080
